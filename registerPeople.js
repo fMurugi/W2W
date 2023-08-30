@@ -62,13 +62,27 @@ menu.state('register.age',{
         menu.con(`${name},how old are you?`)
     },
     next:{
-        '*\\d+': 'end'
+        '*\\d+': 'register.location'
     }
 })
+menu.state('register.location', {
+    run: () => {
+        let age = menu.val;
+        dataToSave.age = age;
+        menu.con(`Great!  choose your location?\n1. Western\n2. Eastern\n3. Central\n4. Coastal\n5. North Eastern`);
+    },
+    next: {
+        '1': 'end',  
+        '2': 'end',
+        '3': 'end',
+        '4': 'end',
+        '5': 'end'
+    }
+});
 menu.state('end',{
     run: async ()=>{
-        let age = menu.val
-        dataToSave.age =age
+        let location = menu.val
+        dataToSave.location =location
 
         const data = new Model(
             {
