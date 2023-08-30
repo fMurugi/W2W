@@ -12,7 +12,12 @@ const dataSchema = new mongoose.Schema({
     phoneNumber:{
         required: false,
         type: String
+    },
+    location:{
+        required: false,
+        type: String
     }
+    
 })
 
 module.exports = mongoose.model("Data",dataSchema)
